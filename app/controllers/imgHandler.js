@@ -7,8 +7,16 @@ function imgHandler(db) {
 
     this.getImages = function(req, res) {
 
+        var srchCnt;
+        var offset = parseInt(req.query.offset, 10);
+        if(isNaN(offset)) {
+            srchCnt = 10;
+        } else {
+            srchCnt = offset;
+        }
+
         var urlBase = "https://api.datamarket.azure.com/Bing/Search/v1/Image?Query=%27";
-        var url = urlBase + req.params.search + "%27&$format=JSON";
+        var url = urlBase + req.params.search + "%27&$top=" + srchCnt + "&$format=JSON";
         var options = {
             uri: url,
             json: true,
@@ -18,17 +26,51 @@ function imgHandler(db) {
             }
         };
 
+        searches.insert(
+          {
+              term: req.params.search,
+              when: Date()
+          }
+        );
+
         rp(options)
-            .then((rtnJSON) => {
-                res.json(rtnJSON);
+            .then((imgsObj) => {
+                var rtnArray = [];
+                imgsObj.d.results.forEach((img) => {
+                    
+                    var rtnImgObj = {
+                        
+                        url: img.MediaUrl,
+                        snippet: img.Title,
+                        thumbnail: img.Thumbnail.MediaUrl,
+                        context: img.SourceUrl
+                        
+                    };
+
+                    rtnArray.push(rtnImgObj);
+
+                });
+                
+                res.json(rtnArray);
+                
             })
+
             .catch((error) => {
                 res.json("Error " + error);
             });
     };
     
     this.getSearches = function(req, res) {
-        searches.find({});
+        searches.find(
+                    {},
+                    {_id: 0, term: 1, when: 1}
+                )
+                .sort({$natural: -1})
+                .limit(10)
+                .toArray((err, srchs) => {
+                    if(err) throw err;
+                    res.json(srchs);
+                });
     };
     
 }
