@@ -1,17 +1,15 @@
 {
-  "name": "clementinejs-fcc",
+  "name": "fcc-Image-Search-Abstraction-Layer-Challenge",
   "version": "1.0.1",
-  "description": "The elegant and lightweight boilerplate for full stack JavaScript.",
+  "description": "Alex's freeCodeCamp Image Search Abstraction Layer chellenge",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnstonbl01/clementinejs-fcc"
+    "url": "https://github.com/alex-evans/img-srch"
   },
-  "homepage": "http://www.clementinejs.com/",
-  "bugs": "https://github.com/johnstonbl01/clementinejs-fcc/issues",
+  "homepage": "https://image-search-alcatrats.c9users.io/",
   "keywords": [
     "MongoDB",
-    "Mongoose",
     "full stack",
     "Express",
     "Node",
@@ -21,14 +19,14 @@
   "scripts": {
   "start": "node server.js"
   },
-  "author": "Blake Johnston",
+  "author": "Alex Evans",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^1.2.0",
+    "dotenv": "^2.0.0",
     "express": "^4.12.4",
     "express-session": "^1.11.3",
-    "mongoose": "^4.1.0",
-    "passport": "^0.3.0",
-    "passport-github": "^1.0.0"
-  }
+    "mongodb": "^2.1.7",
+    "request-promise": "^2.0.1"
+  },
+  "devDependencies": {}
 }

@@ -3,37 +3,34 @@
 <html>
 
 	<head>
-		<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
+		<title>Alex's - Image Search Abstraction Layer</title>
 		
 		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	</head>
-
-	<header>
-		<p>Welcome, <span id="display-name"></span>!</p>
-		<a class="menu" href="/profile">Profile</a>
-		<p>|</p>
-		<a class="menu" href="/logout">Logout</a>
-	</header>
 
 	<body>
 		<div class="container">
-			<img src="/public/img/clementine_150.png" />
-			<br />
-			<p class="clementine-text">Clementine.js</p>
+			<h1>API Basejump: Image Search Abstraction Layer</h1>
 		</div>
 	
 		<div class="container">
-			<p>You have clicked the button <span id="click-nbr"></span> times.</p>
-			<br />
-			<div class="btn-container">
-				<button type="submit" class="btn btn-add">CLICK ME!</button>
-				<button class="btn btn-delete">RESET</button>
-			</div>
+			<h4>User Stories:</h4>
+			<ol>
+				<li>I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</li>
+				<li>I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li>
+				<li>I can get a list of the most recently submitted search strings.</li>
+			</ol>
 		</div>
 		
-		<script type="text/javascript" src="common/ajax-functions.js"></script>
-		<script type="text/javascript" src="controllers/clickController.client.js"></script>
-		<script type="text/javascript" src="controllers/userController.client.js"></script>
+		<div class="container">
+			<h2>Example usage:</h2>
+			<p>
+				<a href="https://image-search-alcatrats.c9users.io/api/imagesearch/lolcats%20funny?offset=10">https://image-search-alcatrats.c9users.io/api/imagesearch/lolcats%20funny?offset=10</a></br>
+				<a href="https://image-search-alcatrats.c9users.io/api/latest/imagesearch/">https://image-search-alcatrats.c9users.io/api/latest/imagesearch/</a></br>
+			</p>
+		</div>
+		
 	</body>
 
 </html>
